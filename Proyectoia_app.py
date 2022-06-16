@@ -7,14 +7,14 @@ def download_data():
  url = 'https://drive.google.com/uc?id=17B8hm_07RhiLpL0GPhuvEQumycgzowez'
  filename = 'data.csv'
  urllib.request.urlretrieve(url, filename)
-download_data()
+c=download_data()
 import matplotlib.pyplot as plt
 import pandas as pd
 import streamlit as st
 import plotly.express as px
 import plotly.figure_factory as ff
 import scipy
-df_bonilla = pd.read_csv(download_data(), header= 0) 
+df_bonilla = pd.read_csv(c, header= 0) 
 #df_miraflores= pd.read_csv(r'https://www.datosabiertos.gob.pe/sites/default/files/Monitoreo_setiembre_Ov.Miraflores.xlsx', header= 0) 
 
 st.title("Análisis Bonilla")
