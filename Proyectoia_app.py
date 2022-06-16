@@ -1,26 +1,12 @@
-# app.py, run with 'streamlit run app.py'
-
-#import pip
-#pip.main(["install", "openpyxl"])
-#pip.main(["install", "pandas"])
-#import plotly.figure_factory as ff
-#pip.main(["install", "matplotlib"])
-#1tReqZLXKH569JkzNQ7cc8kTFA11UdN6qI2PgvDvE6zs
-import matplotlib.pyplot as plt
-import pandas as pd
 import streamlit as st
-import plotly.express as px
-import plotly.figure_factory as ff
-import scipy
-import gdown
-
+import pandas as pd
+import numpy as np
+import urllib.request
 @st.experimental_memo
 def download_data():
-  url = 'https://docs.google.com/uc?id=1tReqZLXKH569JkzNQ7cc8kTFA11UdN6qI2PgvDvE6zs'
-  output = 'data.csv'
-  gdown.download(url,output, quiet= False)
-  return filename
+ url = 'https://drive.google.com/uc?id=17B8hm_07RhiLpL0GPhuvEQumycgzowez'
+ filename = 'data.csv'
+ urllib.request.urlretrieve(url, filename)
+download_data()
 
-
-st.write(download_data())
 
