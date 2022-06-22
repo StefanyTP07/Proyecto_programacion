@@ -15,4 +15,3 @@ st.title("Análisis en Bonilla")
 st.header("Tabla de datos:")
 st.write(df_bonilla)
 st.header("Histogramas de las concentraciones de contaminantes:")
-
