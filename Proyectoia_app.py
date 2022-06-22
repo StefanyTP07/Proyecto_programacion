@@ -1,5 +1,14 @@
+import pip
+pip.main(["install", "openpyxl"])
+pip.main(["install", "pandas"])
+import plotly.figure_factory as ff
+pip.main(["install", "matplotlib"])
+import matplotlib.pyplot as plt
 import pandas as pd
 import streamlit as st
+import plotly.express as px
+import plotly.figure_factory as ff
+import scipy
 df_bonilla = pd.read_excel(r'https://www.datosabiertos.gob.pe/sites/default/files/Monitoreo_setiembre_Bonilla.xlsx', header= 0) 
 df_miraflores= pd.read_excel(r'https://www.datosabiertos.gob.pe/sites/default/files/Monitoreo_setiembre_Ov.Miraflores.xlsx', header= 0) 
 st.title("Análisis en Bonilla")
