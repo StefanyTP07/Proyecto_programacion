@@ -27,47 +27,5 @@ st.write("“Saber la calidad de aire que se respira en un determinado lugar es 
 st.title("Análisis en Bonilla")
 st.header("Tabla de datos:")
 st.write(df_bonilla)
-option = st.selectbox(
- '¿Cómo desearía ser contactado/a?',
- ('Email', 'Teléfono', 'Whatsapp'))
-st.write('Seleccionó:', option)
-st.header("Histogramas de las concentraciones de contaminantes:")
-for i in range(6,15):
-    fig = px.histogram(df_bonilla, df_bonilla.columns[i])
-    st.plotly_chart(fig, use_container_width=True)
-
-st.title("Análisis en Ov. Miraflores")
-st.header("Tabla de datos:")
-st.write(df_miraflores)
-st.header("Histogramas de las concentraciones de contaminantes:")
-for i in range(6,15):
-    fig = px.histogram(df_miraflores, df_miraflores.columns[i])
-    st.plotly_chart(fig, use_container_width=True)
-
-limites_maximos=[1200,150,200,50,150,45,250,70,3]
-dictionary_names=dict()
-for j in range(6,15):
-    dictionary_names[df_bonilla.columns[j]]=df_bonilla.columns[j]+" Bonilla"
-df_bonilla.rename(columns = dictionary_names, inplace=True)
-df_miraflores.columns=(df_miraflores.columns+" Ov. Miraflores").values.tolist()
-
-
-st.title("Comparaciones de los valores de contaminantes entre Bonilla y Ov. Miraflores")
-st.header("Histogramas comparativos:")
-
-for i in range(6,15):
-    fig = ff.create_distplot(
-         [df_bonilla.iloc[:, i].values.tolist(),df_miraflores.iloc[:, i].values.tolist()], [df_bonilla.columns[i],df_miraflores.columns[i]])
-    st.plotly_chart(fig, use_container_width=True)
-st.header("Gráficas comparativas de los Límites máximos permisibles:")
-
-for i in range(6,15):
-    df_concat=[]
-    df_concat=pd.concat([df_bonilla.iloc[:, [5,i]], df_miraflores.iloc[:, i]], axis=1)
-    fig = px.line(df_concat, x=df_concat.columns[0], y=df_concat.columns[1:],
-              hover_data={df_concat.columns[0]: "|%B %d, %Y"},
-              title=df_concat.columns[1]+" vs "+df_concat.columns[2])
-    print(max(df_concat.iloc[:,1:].max(axis=0)))
-    if max(df_concat.iloc[:,1:].max(axis=0)) > limites_maximos[i-6]:
-        fig.add_hrect(y0=limites_maximos[i-6], y1=max(df_concat.iloc[:,1:].max(axis=0)), line_width=0, fillcolor="red", opacity=0.2)
-    st.plotly_chart(fig, use_container_width=True)
+co=df_bonilla['CO (ug/m3)']
+st.line_chart(co)
