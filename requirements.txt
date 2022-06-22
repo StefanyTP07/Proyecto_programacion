@@ -1,1 +1,4 @@
 gdown
+matplotlib
+plotly
+scipy
