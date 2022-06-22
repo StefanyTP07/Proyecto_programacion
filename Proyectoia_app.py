@@ -27,5 +27,7 @@ st.write("“Saber la calidad de aire que se respira en un determinado lugar es 
 st.title("Análisis en Bonilla")
 st.header("Tabla de datos:")
 st.write(df_bonilla)
-co=df_bonilla['CO (ug/m3)']
-st.hist_chart(co)
+arr=df_bonilla
+fig, ax=plt.subplots()
+ax.hist(arr, bins=20)
+st.pyplot(fig)
