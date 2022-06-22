@@ -28,4 +28,4 @@ st.title("Análisis en Bonilla")
 st.header("Tabla de datos:")
 st.write(df_bonilla)
 co=df_bonilla['CO (ug/m3)']
-st.line_chart(co)
+st.hist_chart(co)
